@@ -9,6 +9,7 @@
 #define SNIPE   8
 
 #include <behaviors/mouse_keys.dtsi>
+#define HOST_OS 2  // 1 = Linux, 2 = macOS, 3 = Windows
 #include <behaviors/unicode.dtsi>
 #include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
