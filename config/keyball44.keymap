@@ -52,16 +52,53 @@
         };
     };
 
+    macros {
+        tmux_s: tmux_s {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(A) &kp S>;
+            label = "TMUX_S";
+        };
+
+        tmux_d: tmux_d {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(A) &kp D>;
+            label = "TMUX_D";
+        };
+
+        tmux_f: tmux_f {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(A) &kp F>;
+            label = "TMUX_F";
+        };
+
+        tmux_g: tmux_g {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(A) &kp G>;
+            label = "TMUX_G";
+        };
+
+        tmux_space: tmux_space {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(A) &kp SPACE>;
+            label = "TMUX_SPACE";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             label = "QWERTY";
             bindings = <
-&kp TAB           &kp Q             &kp W            &kp E           &kp R         &kp T                   &kp Y            &kp U    &kp I            &kp O    &kp P                 &kp BACKSPACE
-&mt LCTRL ESCAPE  &mt LEFT_SHIFT A  &lt 3 S          &mt LEFT_ALT D  &lt 2 F       &kp G                   &kp H            &lt 2 J  &mt RIGHT_ALT K  &lt 3 L  &mt RIGHT_SHIFT SEMI  &kp SQT
-&kp LEFT_SHIFT    &kp Z             &kp X            &kp C           &kp V         &kp B                   &kp N            &kp M    &kp COMMA        &kp DOT  &kp SLASH             &kp RIGHT_SHIFT
-&kp RCTRL         &kp LALT          &lt 5 RIGHT_ALT  &lt 1 SPACE     &kp LEFT_GUI             &lt 2 ENTER  &lt 4 BACKSPACE                                                           &kp LC(LA(LG(SPACE)))
+&kp TAB           &kp Q             &kp W            &kp E           &kp R         &kp T                   &kp Y            &kp U    &kp I           &kp O    &kp P                 &kp BACKSPACE
+&mt LCTRL ESCAPE  &mt LEFT_SHIFT A  &lt 3 S          &mt LEFT_ALT D  &lt 2 F       &kp G                   &kp H            &lt 2 J  &mt LEFT_ALT K  &lt 3 L  &mt RIGHT_SHIFT SEMI  &kp SQT
+&kp LEFT_SHIFT    &kp Z             &kp X            &kp C           &kp V         &kp B                   &kp N            &kp M    &kp COMMA       &kp DOT  &kp SLASH             &mt RIGHT_SHIFT ENTER
+&kp RCTRL         &kp LALT          &lt 5 RIGHT_ALT  &lt 1 SPACE     &kp LEFT_GUI             &lt 2 ENTER  &lt 4 BACKSPACE                                                          &kp LC(LA(LG(SPACE)))
             >;
         };
 
@@ -78,10 +115,10 @@
         symbol_layer {
             label = "SYM";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans              &kp PLUS        &kp LBKT              &kp RBKT               &kp DOUBLE_QUOTES  &kp PIPE              &none
-&trans  &trans  &trans  &trans  &trans  &trans              &kp MINUS       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SINGLE_QUOTE   &kp EQUAL             &none
-&trans  &trans  &trans  &trans  &trans  &trans              &kp UNDERSCORE  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp GRAVE          &kp NON_US_BACKSLASH  &kp TILDE
-&trans  &trans  &trans  &trans  &trans              &trans  &trans                                                                                                &trans
+&trans  &trans     &trans   &trans   &trans   &tmux_space              &kp PLUS        &kp LBKT              &kp RBKT               &kp DOUBLE_QUOTES  &kp PIPE              &none
+&trans  &kt LC(A)  &tmux_s  &tmux_d  &tmux_f  &tmux_g                  &kp MINUS       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SINGLE_QUOTE   &kp EQUAL             &kt TILDE
+&trans  &trans     &trans   &trans   &trans   &trans                   &kp UNDERSCORE  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp GRAVE          &kp NON_US_BACKSLASH  &none
+&trans  &trans     &trans   &trans   &trans                    &trans  &trans                                                                                                &trans
             >;
         };
 
@@ -96,10 +133,10 @@
 
         movement_layer {
             bindings = <
-&kp TILDE  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5              &kp F6    &kp F7          &kp F8        &kp F9           &kp F10  &kp F11
-&trans     &trans  &trans  &trans  &trans  &trans              &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans   &kp F12
-&trans     &trans  &trans  &trans  &trans  &trans              &kp HOME  &kp PAGE_DOWN   &kp PG_UP     &kp END          &trans   &trans
-&trans     &trans  &trans  &mo 6   &trans              &trans  &trans                                                            &trans
+&kp TILDE  &kp F1  &kp F2  &kp F3  &kp F4      &kp F5                    &kp F6    &kp F7          &kp F8        &kp F9           &kp F10  &kp F11
+&trans     &trans  &trans  &trans  &kp K_MUTE  &kp C_VOL_UP              &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans   &kp F12
+&trans     &trans  &trans  &trans  &trans      &kp C_VOL_DN              &kp HOME  &kp PAGE_DOWN   &kp PG_UP     &kp END          &trans   &trans
+&trans     &trans  &trans  &mo 6   &trans                        &trans  &trans                                                            &trans
             >;
 
             label = "MOVE";
