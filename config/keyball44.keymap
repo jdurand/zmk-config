@@ -9,7 +9,6 @@
 #define SNIPE   8
 
 #include <behaviors/mouse_keys.dtsi>
-#define HOST_OS 2  // 1 = Linux, 2 = macOS, 3 = Windows
 #include <behaviors/unicode.dtsi>
 #include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
@@ -39,6 +38,11 @@
 &msc {
     time-to-max-speed-ms = <1000>;
     acceleration-exponent = <1>;
+};
+
+// macOS unicode input (requires Unicode Hex Input enabled in System Preferences)
+&uc {
+    default-mode = <UC_MODE_MACOS>;
 };
 
 &lt {
