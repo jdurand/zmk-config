@@ -65,6 +65,7 @@
     };
 
     macros {
+        // Tmux macros
         tmux_s: tmux_s {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -98,6 +99,70 @@
             #binding-cells = <0>;
             bindings = <&kp LC(A) &kp SPACE>;
             label = "TMUX_SPACE";
+        };
+
+        // Accent macros (macOS Option+deadkey sequences)
+        ac_e: ac_e {  // é (acute e)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(E) &kp E>;
+            label = "ACUTE_E";
+        };
+
+        gr_e: gr_e {  // è (grave e)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp E>;
+            label = "GRAVE_E";
+        };
+
+        gr_a: gr_a {  // à (grave a)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp A>;
+            label = "GRAVE_A";
+        };
+
+        gr_u: gr_u {  // ù (grave u)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp U>;
+            label = "GRAVE_U";
+        };
+
+        cf_e: cf_e {  // ê (circumflex e)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(I) &kp E>;
+            label = "CIRCUMFLEX_E";
+        };
+
+        cf_a: cf_a {  // â (circumflex a)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(I) &kp A>;
+            label = "CIRCUMFLEX_A";
+        };
+
+        cf_o: cf_o {  // ô (circumflex o)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(I) &kp O>;
+            label = "CIRCUMFLEX_O";
+        };
+
+        cf_i: cf_i {  // î (circumflex i)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(I) &kp I>;
+            label = "CIRCUMFLEX_I";
+        };
+
+        cd_c: cd_c {  // ç (cedilla c)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(C)>;
+            label = "CEDILLA_C";
         };
     };
 
@@ -135,23 +200,23 @@
         };
 
         accent_layer {
+            label = "ACC";
             bindings = <
-&trans  &trans  &trans  &kp E   &trans  &trans              &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &gr_e   &ac_e   &cf_e   &trans              &trans  &gr_u   &cf_i   &cf_o   &trans  &trans
+&trans  &gr_a   &cf_a   &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &cd_c   &trans  &trans              &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans              &trans  &trans                                  &trans
             >;
         };
 
         movement_layer {
+            label = "MOVE";
             bindings = <
 &kp TILDE  &kp F1  &kp F2  &kp F3  &kp F4      &kp F5                    &kp F6    &kp F7          &kp F8        &kp F9           &kp F10  &kp F11
 &trans     &trans  &trans  &trans  &kp K_MUTE  &kp C_VOL_UP              &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans   &kp F12
 &trans     &trans  &trans  &trans  &trans      &kp C_VOL_DN              &kp HOME  &kp PAGE_DOWN   &kp PG_UP     &kp END          &trans   &trans
 &trans     &trans  &trans  &mo 6   &trans                        &trans  &trans                                                            &trans
             >;
-
-            label = "MOVE";
         };
 
         mouse_layer {
