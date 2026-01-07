@@ -9,12 +9,25 @@
 #define SNIPE   8
 
 #include <behaviors/mouse_keys.dtsi>
+#include <behaviors/unicode.dtsi>
 #include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200
 #include <dt-bindings/zmk/pointing.h>
+
+// French accent unicode characters (lowercase/uppercase pairs)
+// é/É  è/È  à/À  ù/Ù  ê/Ê  â/Â  ô/Ô  î/Î  ç/Ç
+#define UC_E_ACUTE   0xE9 0xC9
+#define UC_E_GRAVE   0xE8 0xC8
+#define UC_A_GRAVE   0xE0 0xC0
+#define UC_U_GRAVE   0xF9 0xD9
+#define UC_E_CIRC    0xEA 0xCA
+#define UC_A_CIRC    0xE2 0xC2
+#define UC_O_CIRC    0xF4 0xD4
+#define UC_I_CIRC    0xEE 0xCE
+#define UC_C_CEDILLA 0xE7 0xC7
 
 // QMK-like mouse acceleration (slower ramp-up than ZMK default)
 &mmv {
@@ -65,7 +78,6 @@
     };
 
     macros {
-        // Tmux macros
         tmux_s: tmux_s {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -99,70 +111,6 @@
             #binding-cells = <0>;
             bindings = <&kp LC(A) &kp SPACE>;
             label = "TMUX_SPACE";
-        };
-
-        // Accent macros (macOS Option+deadkey sequences)
-        ac_e: ac_e {  // é (acute e)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(E) &kp E>;
-            label = "ACUTE_E";
-        };
-
-        gr_e: gr_e {  // è (grave e)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(GRAVE) &kp E>;
-            label = "GRAVE_E";
-        };
-
-        gr_a: gr_a {  // à (grave a)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(GRAVE) &kp A>;
-            label = "GRAVE_A";
-        };
-
-        gr_u: gr_u {  // ù (grave u)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(GRAVE) &kp U>;
-            label = "GRAVE_U";
-        };
-
-        cf_e: cf_e {  // ê (circumflex e)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(I) &kp E>;
-            label = "CIRCUMFLEX_E";
-        };
-
-        cf_a: cf_a {  // â (circumflex a)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(I) &kp A>;
-            label = "CIRCUMFLEX_A";
-        };
-
-        cf_o: cf_o {  // ô (circumflex o)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(I) &kp O>;
-            label = "CIRCUMFLEX_O";
-        };
-
-        cf_i: cf_i {  // î (circumflex i)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(I) &kp I>;
-            label = "CIRCUMFLEX_I";
-        };
-
-        cd_c: cd_c {  // ç (cedilla c)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(C)>;
-            label = "CEDILLA_C";
         };
     };
 
@@ -202,10 +150,10 @@
         accent_layer {
             label = "ACC";
             bindings = <
-&trans  &trans  &gr_e   &ac_e   &cf_e   &trans              &trans  &gr_u   &cf_i   &cf_o   &trans  &trans
-&trans  &gr_a   &cf_a   &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &cd_c   &trans  &trans              &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans              &trans  &trans                                  &trans
+&trans  &trans         &uc UC_E_GRAVE  &uc UC_E_ACUTE  &uc UC_E_CIRC  &trans              &trans  &uc UC_U_GRAVE  &uc UC_I_CIRC  &uc UC_O_CIRC  &trans  &trans
+&trans  &uc UC_A_GRAVE &uc UC_A_CIRC   &trans          &trans         &trans              &trans  &trans          &trans         &trans         &trans  &trans
+&trans  &trans         &trans          &uc UC_C_CEDILLA &trans        &trans              &trans  &trans          &trans         &trans         &trans  &trans
+&trans  &trans         &trans          &trans          &trans                     &trans  &trans                                                        &trans
             >;
         };
 
