@@ -9,6 +9,9 @@
 #define SNIPE   8
 
 #include <behaviors/mouse_keys.dtsi>
+// Timing for unicode sequences (increase if characters appear mangled)
+#define ZMK_UNICODE_TAP_MS 10   // default: 5
+#define ZMK_UNICODE_WAIT_MS 10  // default: 0
 #include <behaviors/unicode.dtsi>
 #include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
@@ -40,7 +43,6 @@
     acceleration-exponent = <1>;
 };
 
-// macOS unicode input (requires Unicode Hex Input enabled in System Preferences)
 &uc {
     default-mode = <UC_MODE_MACOS>;
 };
