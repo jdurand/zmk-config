@@ -16,26 +16,52 @@ trackball.
 |---|---------|--------------------------------------------------|
 | 0 | DEFAULT | QWERTY base layer with home row mods             |
 | 1 | NUM     | Numbers and symbols (top row: `!@#$%^&*()`)      |
-| 2 | SYM     | Programming symbols, brackets, quotes            |
-| 3 | ACC     | Accented characters                              |
-| 4 | MOVE    | Arrow keys, F-keys, navigation (Home/End/PgUp)   |
-| 5 | MOUSE   | Mouse buttons (auto-activated on trackball move) |
-| 6 | SYS     | Bluetooth profile selection and management       |
+| 2 | SYM     | Programming symbols, brackets, quotes, tmux      |
+| 3 | ACC     | Lowercase accented characters (é, è, à, etc.)    |
+| 4 | ACCS    | Uppercase accented characters (É, È, À, etc.)    |
+| 5 | MOVE    | Arrow keys, F-keys, navigation (Home/End/PgUp)   |
+| 6 | MOUSE   | Mouse buttons (auto-activated on trackball move) |
 | 7 | SCROLL  | Trackball outputs scroll instead of cursor       |
 | 8 | SNIPE   | Reduced trackball sensitivity for precision      |
+| 9 | SYS     | Bluetooth profile selection and management       |
 
 ## Trackball Features
 
 The PMW3610 trackball has three special modes configured in
 `boards/shields/keyball_nano/keyball44_right.overlay`:
 
-- **automouse-layer (5)**: Automatically activates the MOUSE layer when the
+- **automouse-layer (6)**: Automatically activates the MOUSE layer when the
   trackball moves, providing quick access to click buttons without holding a
   layer key
 - **scroll-layers (7)**: When layer 7 (SCROLL) is active, trackball movement
   outputs scroll events instead of cursor movement
 - **snipe-layers (8)**: When layer 8 (SNIPE) is active, trackball sensitivity
   is reduced for precise cursor positioning
+
+## Accents
+
+French accented characters are available via macOS dead key sequences.
+
+**Lowercase accents** (layer 3 - ACC, accessed via S or L hold):
+
+| Key | Character | Description    |
+|-----|-----------|----------------|
+| W   | è         | grave e        |
+| E   | é         | acute e        |
+| R   | ê         | circumflex e   |
+| U   | ù         | grave u        |
+| I   | î         | circumflex i   |
+| O   | ô         | circumflex o   |
+| A   | à         | grave a        |
+| S   | â         | circumflex a   |
+| C   | ç         | cedilla c      |
+
+**Uppercase accents** (layer 4 - ACCS, accessed via A+D or ;+L combo):
+
+Same key positions as lowercase, but produces uppercase variants (É, È, À, etc.)
+
+- **A + D**: Momentarily activates ACCS layer (left hand)
+- **; + L**: Momentarily activates ACCS layer (right hand)
 
 ## Home Row Mods
 

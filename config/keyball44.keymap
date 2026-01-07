@@ -1,12 +1,14 @@
-#define DEFAULT 0
-#define NUM     1
-#define SYM     2
-#define ACC     3
-#define MOVE    4
-#define MOUSE   5
-#define SYS     6
-#define SCROLL  7
-#define SNIPE   8
+// Layer indices (for reference - must use numeric values in bindings)
+// 0: DEFAULT - QWERTY base layer
+// 1: NUM     - Numbers and shifted symbols
+// 2: SYM     - Programming symbols and tmux
+// 3: ACC     - Lowercase accents (é, è, à, etc.)
+// 4: ACCS    - Uppercase accents (É, È, À, etc.)
+// 5: MOVE    - Navigation and F-keys
+// 6: MOUSE   - Mouse buttons (automouse layer)
+// 7: SCROLL  - Trackball scroll mode
+// 8: SNIPE   - Trackball snipe mode
+// 9: SYS     - Bluetooth and system
 
 #include <behaviors/mouse_keys.dtsi>
 #include <dt-bindings/zmk/mouse.h>
@@ -42,6 +44,26 @@
 &caps_word { continue-list = <UNDERSCORE MINUS>; };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        // A + S for uppercase accents (left hand)
+        combo_accs_left {
+            timeout-ms = <50>;
+            key-positions = <13 14>;
+            bindings = <&mo 4>;
+            require-prior-idle-ms = <150>;
+        };
+
+        // ; + L for uppercase accents (right hand)
+        combo_accs_right {
+            timeout-ms = <50>;
+            key-positions = <21 22>;
+            bindings = <&mo 4>;
+            require-prior-idle-ms = <150>;
+        };
+    };
+
     // custom shift using mod-morph 
 
     behaviors {
@@ -164,31 +186,98 @@
             bindings = <&kp LA(C)>;
             label = "CEDILLA_C";
         };
+
+        // Uppercase accent macros (node names must differ from lowercase)
+        ac_e_u: ac_e_u {  // É (acute E)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(E) &kp LS(E)>;
+            label = "ACUTE_E_UPPER";
+        };
+
+        gr_e_u: gr_e_u {  // È (grave E)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp LS(E)>;
+            label = "GRAVE_E_UPPER";
+        };
+
+        gr_a_u: gr_a_u {  // À (grave A)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp LS(A)>;
+            label = "GRAVE_A_UPPER";
+        };
+
+        gr_u_u: gr_u_u {  // Ù (grave U)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp LS(U)>;
+            label = "GRAVE_U_UPPER";
+        };
+
+        cf_e_u: cf_e_u {  // Ê (circumflex E)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(I) &kp LS(E)>;
+            label = "CIRCUMFLEX_E_UPPER";
+        };
+
+        cf_a_u: cf_a_u {  // Â (circumflex A)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(I) &kp LS(A)>;
+            label = "CIRCUMFLEX_A_UPPER";
+        };
+
+        cf_o_u: cf_o_u {  // Ô (circumflex O)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(I) &kp LS(O)>;
+            label = "CIRCUMFLEX_O_UPPER";
+        };
+
+        cf_i_u: cf_i_u {  // Î (circumflex I)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(I) &kp LS(I)>;
+            label = "CIRCUMFLEX_I_UPPER";
+        };
+
+        cd_c_u: cd_c_u {  // Ç (cedilla C)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LA(C))>;
+            label = "CEDILLA_C_UPPER";
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
+        // Layer 0: DEFAULT - QWERTY base layer
         default_layer {
             label = "QWERTY";
             bindings = <
-&kp TAB           &kp Q             &kp W         &kp E           &kp R            &kp T                   &kp Y            &kp U    &kp I           &kp O    &kp P                 &kp BACKSPACE
-&mt LCTRL ESCAPE  &mt LEFT_SHIFT A  &lt 3 S       &mt LEFT_ALT D  &lt 2 F          &kp G                   &kp H            &lt 2 J  &mt LEFT_ALT K  &lt 3 L  &mt RIGHT_SHIFT SEMI  &kp SQT
-&kp LEFT_SHIFT    &kp Z             &kp X         &kp C           &kp V            &kp B                   &kp N            &kp M    &kp COMMA       &kp DOT  &kp SLASH             &mt RIGHT_SHIFT ENTER
-&kp RCTRL         &kp LALT          &kp LEFT_GUI  &lt 1 SPACE     &lt 5 RIGHT_ALT             &lt 2 ENTER  &lt 4 BACKSPACE                                                          &kp LC(LA(LG(SPACE)))
+&kp TAB           &kp Q             &kp W         &kp E           &kp R        &kp T                &kp Y        &kp U    &kp I           &kp O    &kp P                 &kp BACKSPACE
+&mt LCTRL ESCAPE  &mt LEFT_SHIFT A  &lt 3 S       &mt LEFT_ALT D  &lt 2 F      &kp G                &kp H        &lt 2 J  &mt LEFT_ALT K  &lt 3 L  &mt RIGHT_SHIFT SEMI  &kp SQT
+&kp LEFT_SHIFT    &kp Z             &kp X         &kp C           &kp V        &kp B                &kp N        &kp M    &kp COMMA       &kp DOT  &kp SLASH             &mt RIGHT_SHIFT ENTER
+&kp RCTRL         &kp LALT          &kp LEFT_GUI  &lt 1 SPACE     &lt 6 RIGHT_ALT      &lt 2 ENTER  &lt 5 BACKSPACE                                                       &kp LC(LA(LG(SPACE)))
             >;
         };
 
+        // Layer 1: NUM - Numbers and shifted symbols
         number_layer {
             label = "NUM";
             bindings = <
 &kp TILDE  &kp EXCL      &kp AT_SIGN   &kp HASH      &kp DOLLAR    &kp PERCENT               &kp CARET     &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans
 &kp GRAVE  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5              &kp NUMBER_6  &kp NUMBER_7   &kp NUMBER_8  &kp NUMBER_9          &kp NUMBER_0           &trans
 &trans     &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0              &none         &none          &none         &none                 &none                  &trans
-&trans     &trans        &trans        &trans        &trans                          &trans  &mo 6                                                                                   &trans
+&trans     &trans        &trans        &trans        &trans                          &trans  &mo 9                                                                                   &trans
             >;
         };
 
+        // Layer 2: SYM - Programming symbols and tmux
         symbol_layer {
             label = "SYM";
             bindings = <
@@ -199,6 +288,7 @@
             >;
         };
 
+        // Layer 3: ACC - Lowercase accents (é, è, à, etc.)
         accent_layer {
             label = "ACC";
             bindings = <
@@ -209,16 +299,29 @@
             >;
         };
 
+        // Layer 4: ACCS - Uppercase accents (É, È, À, etc.)
+        accent_shifted_layer {
+            label = "ACCS";
+            bindings = <
+&trans  &trans    &gr_e_u  &ac_e_u  &cf_e_u  &trans              &trans  &gr_u_u  &cf_i_u  &cf_o_u  &trans  &trans
+&trans  &gr_a_u   &cf_a_u  &trans   &trans   &trans              &trans  &trans   &trans   &trans   &trans  &trans
+&trans  &trans    &trans   &cd_c_u  &trans   &trans              &trans  &trans   &trans   &trans   &trans  &trans
+&trans  &trans    &trans   &trans   &trans               &trans  &trans                                    &trans
+            >;
+        };
+
+        // Layer 5: MOVE - Navigation and F-keys
         movement_layer {
             label = "MOVE";
             bindings = <
 &kp TILDE  &kp F1  &kp F2  &kp F3  &kp F4      &kp F5                    &kp F6    &kp F7          &kp F8        &kp F9           &kp F10  &kp F11
 &trans     &trans  &trans  &trans  &kp K_MUTE  &kp C_VOL_UP              &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans   &kp F12
 &trans     &trans  &trans  &trans  &trans      &kp C_VOL_DN              &kp HOME  &kp PAGE_DOWN   &kp PG_UP     &kp END          &trans   &trans
-&trans     &trans  &trans  &mo 6   &trans                        &trans  &trans                                                            &trans
+&trans     &trans  &trans  &mo 9   &trans                        &trans  &trans                                                            &trans
             >;
         };
 
+        // Layer 6: MOUSE - Mouse buttons (automouse layer)
         mouse_layer {
             label = "MOUSE";
             bindings = <
@@ -229,16 +332,7 @@
             >;
         };
 
-        system_layer {
-            label = "SYS";
-            bindings = <
-&none   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4              &none   &none  &none  &none  &none  &bt BT_CLR
-&none   &none         &none         &none         &none         &none                     &none   &none  &none  &none  &none  &none
-&none   &none         &none         &none         &none         &none                     &none   &none  &none  &none  &none  &none
-&trans  &trans        &trans        &trans        &trans                          &trans  &trans                              &trans
-            >;
-        };
-
+        // Layer 7: SCROLL - Trackball scroll mode
         scroll_layer {
             label = "SCROLL";
             bindings = <
@@ -249,6 +343,7 @@
             >;
         };
 
+        // Layer 8: SNIPE - Trackball snipe mode
         snipe_layer {
             label = "SNIPE";
             bindings = <
@@ -256,6 +351,17 @@
 &mo 8   &trans  &trans  &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &mo 8
 &mo 7   &trans  &trans  &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &mo 7
 &trans  &trans  &trans  &trans  &trans              &trans  &trans                                  &trans
+            >;
+        };
+
+        // Layer 9: SYS - Bluetooth and system
+        system_layer {
+            label = "SYS";
+            bindings = <
+&none   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4              &none   &none  &none  &none  &none  &bt BT_CLR
+&none   &none         &none         &none         &none         &none                     &none   &none  &none  &none  &none  &none
+&none   &none         &none         &none         &none         &none                     &none   &none  &none  &none  &none  &none
+&trans  &trans        &trans        &trans        &trans                          &trans  &trans                              &trans
             >;
         };
     };
