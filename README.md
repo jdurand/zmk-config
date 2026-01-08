@@ -93,10 +93,10 @@ artifacts from the Actions tab.
 
 ### Build outputs
 
-- `keyball44_left-nice_nano_v2.uf2` - Left half firmware
-- `keyball44_right-nice_nano_v2.uf2` - Right half firmware (includes ZMK Studio
+- `keyball44_left-nice_nano.uf2` - Left half firmware
+- `keyball44_right-nice_nano.uf2` - Right half firmware (includes ZMK Studio
   support)
-- `settings_reset-nice_nano_v2.uf2` - Settings reset utility
+- `settings_reset-nice_nano.uf2` - Settings reset utility
 
 ### Flashing
 
@@ -124,9 +124,9 @@ artifacts from the Actions tab.
 
 Defined in `config/west.yml`:
 
-- [ZMK Firmware](https://github.com/zmkfirmware/zmk) (v0.2)
-- [PMW3610 Driver](https://github.com/kumamuk-git/zmk-pmw3610-driver) (for
-  trackball support)
+- [ZMK Firmware](https://github.com/zmkfirmware/zmk) (main branch, Zephyr 4.x)
+- [PMW3610 Driver](https://github.com/AntoineGS/zmk-pmw3610-driver) (for
+  trackball support with improved deep sleep battery consumption)
 
 ## Configuration Options
 

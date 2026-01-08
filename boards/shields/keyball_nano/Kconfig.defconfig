@@ -6,6 +6,12 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_BLE_ROLE_CENTRAL
 	default y
 
+config PMW3610
+	default y
+
+config PMW3610_PM
+	default y
+
 endif
 
 if SHIELD_KEYBALL44_LEFT || SHIELD_KEYBALL44_RIGHT
