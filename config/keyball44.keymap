@@ -44,7 +44,7 @@
     quick-tap-ms = <150>;
 };
 
-&caps_word { continue-list = <UNDERSCORE MINUS>; };
+&caps_word { continue-list = <UNDER MINUS>; };
 
 / {
     combos {
@@ -262,10 +262,10 @@
         default_layer {
             label = "QWERTY";
             bindings = <
-&kp TAB           &kp Q             &kp W         &kp E           &kp R        &kp T                &kp Y        &kp U    &kp I           &kp O    &kp P                 &kp BACKSPACE
-&mt LCTRL ESCAPE  &mt LEFT_SHIFT A  &lt 3 S       &mt LEFT_ALT D  &lt 2 F      &kp G                &kp H        &lt 2 J  &mt LEFT_ALT K  &lt 3 L  &mt RIGHT_SHIFT SEMI  &kp SQT
-&kp LEFT_SHIFT    &kp Z             &kp X         &kp C           &kp V        &kp B                &kp N        &kp M    &kp COMMA       &kp DOT  &kp SLASH             &mt RIGHT_SHIFT ENTER
-&kp RCTRL         &kp LALT          &kp LEFT_GUI  &lt 1 SPACE     &lt 6 RIGHT_ALT      &lt 2 ENTER  &lt 5 BACKSPACE                                                       &kp LC(LA(LG(SPACE)))
+&kp TAB           &kp Q        &kp W      &kp E         &kp R         &kp T                                         &kp Y       &kp U    &kp I       &kp O    &kp P                  &kp BSPC
+&mt LCTRL ESCAPE  &mt LSHFT A  &lt 3 S    &mt LALT D    &lt 2 F       &kp G                                         &kp H       &lt 2 J  &mt LALT K  &lt 3 L  &mt RSHFT SEMI         &kp SQT
+&kp LSHFT         &kp Z        &kp X      &kp C         &kp V         &kp B                                         &kp N       &kp M    &kp COMMA   &kp DOT  &kp SLASH              &mt RSHFT ENTER
+                               &kp RCTRL  &kp LALT      &kp LEFT_GUI  &lt 1 SPACE  &lt 6 RALT          &lt 2 ENTER  &lt 5 BSPC                                &kp LC(LA(LG(SPACE)))
             >;
         };
 
@@ -273,10 +273,10 @@
         number_layer {
             label = "NUM";
             bindings = <
-&kp TILDE  &kp EXCL      &kp AT_SIGN   &kp HASH      &kp DOLLAR    &kp PERCENT               &kp CARET     &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans
-&kp GRAVE  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5              &kp NUMBER_6  &kp NUMBER_7   &kp NUMBER_8  &kp NUMBER_9          &kp NUMBER_0           &trans
-&trans     &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0              &none         &none          &trans        &trans                &trans                 &trans
-&trans     &trans        &trans        &trans        &trans                          &trans  &lt 8 BACKSPACE                                                                         &mo 9
+&kp TILDE        &kp EXCL      &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                          &kp CARET   &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR      &kp DELETE
+&kp GRAVE        &mt LSHFT N1  &kp N2       &kp N3    &kp N4      &kp N5                               &kp N6      &kp N7     &kp N8     &kp N9    &mt RSHFT N0  &trans
+&mt LSHFT ENTER  &kp N6        &kp N7       &kp N8    &kp N9      &kp N0                               &none       &none      &trans     &trans    &kp BSLH      &trans
+                               &trans       &trans    &trans      &trans       &trans          &trans  &lt 8 BSPC                                  &mo 9
             >;
         };
 
@@ -284,10 +284,10 @@
         symbol_layer {
             label = "SYM";
             bindings = <
-&trans  &trans     &trans   &trans   &trans   &tmux_space              &kp PLUS        &kp LBKT              &kp RBKT               &kp DOUBLE_QUOTES  &kp PIPE              &none
-&trans  &kt LC(A)  &tmux_s  &tmux_d  &tmux_f  &tmux_g                  &kp MINUS       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SINGLE_QUOTE   &kp EQUAL             &kt TILDE
-&trans  &trans     &trans   &trans   &trans   &trans                   &kp UNDERSCORE  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp GRAVE          &kp NON_US_BACKSLASH  &none
-&trans  &trans     &trans   &trans   &trans                    &trans  &trans                                                                                                &trans
+&trans  &trans     &trans   &trans   &trans   &tmux_space                          &kp PLUS   &kp LBKT  &kp RBKT  &kp DQT    &kp PIPE   &none
+&trans  &kt LC(A)  &tmux_s  &tmux_d  &tmux_f  &tmux_g                              &kp MINUS  &kp LPAR  &kp RPAR  &kp SQT    &kp EQUAL  &kt TILDE
+&trans  &trans     &trans   &trans   &trans   &trans                               &kp UNDER  &kp LBRC  &kp RBRC  &kp GRAVE  &kp BSLH   &none
+                   &trans   &trans   &trans   &trans       &trans          &trans  &trans                                    &trans
             >;
         };
 
@@ -295,10 +295,10 @@
         accent_layer {
             label = "ACC";
             bindings = <
-&trans  &trans  &gr_e   &ac_e   &cf_e   &trans              &trans  &gr_u   &cf_i   &cf_o   &trans  &trans
-&trans  &gr_a   &cf_a   &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &cd_c   &trans  &trans              &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans              &trans  &trans                                  &trans
+&trans  &trans  &gr_e   &ac_e   &cf_e   &trans                          &trans  &gr_u   &cf_i   &cf_o   &trans  &trans
+&trans  &gr_a   &cf_a   &trans  &trans  &trans                          &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &cd_c   &trans  &trans                          &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans          &trans  &trans                          &trans
             >;
         };
 
@@ -306,10 +306,10 @@
         accent_shifted_layer {
             label = "ACCS";
             bindings = <
-&trans  &trans    &gr_e_u  &ac_e_u  &cf_e_u  &trans              &trans  &gr_u_u  &cf_i_u  &cf_o_u  &trans  &trans
-&trans  &gr_a_u   &cf_a_u  &trans   &trans   &trans              &trans  &trans   &trans   &trans   &trans  &trans
-&trans  &trans    &trans   &cd_c_u  &trans   &trans              &trans  &trans   &trans   &trans   &trans  &trans
-&trans  &trans    &trans   &trans   &trans               &trans  &trans                                    &trans
+&trans  &trans   &gr_e_u  &ac_e_u  &cf_e_u  &trans                          &trans  &gr_u_u  &cf_i_u  &cf_o_u  &trans  &trans
+&trans  &gr_a_u  &cf_a_u  &trans   &trans   &trans                          &trans  &trans   &trans   &trans   &trans  &trans
+&trans  &trans   &trans   &cd_c_u  &trans   &trans                          &trans  &trans   &trans   &trans   &trans  &trans
+                 &trans   &trans   &trans   &trans  &trans          &trans  &trans                             &trans
             >;
         };
 
@@ -317,10 +317,10 @@
         movement_layer {
             label = "MOVE";
             bindings = <
-&kp TILDE  &kp F1  &kp F2  &kp F3  &kp F4      &kp F5                    &kp F6    &kp F7          &kp F8        &kp F9           &kp F10  &kp F11
-&trans     &trans  &trans  &trans  &kp K_MUTE  &kp C_VOL_UP              &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans   &kp F12
-&trans     &trans  &trans  &trans  &trans      &kp C_VOL_DN              &kp HOME  &kp PAGE_DOWN   &kp PG_UP     &kp END          &trans   &trans
-&trans     &trans  &trans  &mo 8   &trans                        &trans  &trans                                                            &trans
+&kp TILDE  &kp F1         &kp F2   &kp F3  &kp F4      &kp F5                                &kp F6    &kp F7     &kp F8     &kp F9     &kp F10  &kp DELETE
+&trans     &mt LSHFT F11  &kp F12  &trans  &kp K_MUTE  &kp C_VOL_UP                          &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans   &trans
+&trans     &trans         &trans   &trans  &trans      &kp C_VOL_DN                          &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans   &trans
+                          &trans   &trans  &trans      &mo 8         &trans          &trans  &trans                                     &trans
             >;
         };
 
@@ -328,10 +328,10 @@
         mouse_layer {
             label = "MOUSE";
             bindings = <
-&none   &trans     &trans     &trans     &trans     &trans              &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans     &trans
-&mo 8   &mkp MCLK  &mkp RCLK  &mkp RCLK  &mkp LCLK  &trans              &trans          &mkp LCLK       &mkp RCLK     &mkp RCLK        &mkp MCLK  &mo 8
-&mo 7   &trans     &trans     &trans     &trans     &trans              &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &trans     &mo 7
-&trans  &trans     &trans     &mo 7      &trans                 &trans  &trans                                                                    &trans
+&none   &trans  &trans  &mkp MCLK  &trans     &trans                          &trans  &trans     &mkp MCLK  &trans  &trans  &trans
+&mo 8   &trans  &trans  &mkp RCLK  &mkp LCLK  &trans                          &trans  &mkp LCLK  &mkp RCLK  &trans  &trans  &mo 8
+&trans  &trans  &trans  &trans     &trans     &trans                          &trans  &trans     &trans     &trans  &trans  &mo 7
+                &trans  &trans     &trans     &mo 7   &trans          &trans  &trans                                &trans
             >;
         };
 
@@ -339,10 +339,10 @@
         scroll_layer {
             label = "SCROLL";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &trans
-&mo 8   &trans  &trans  &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &mo 8
-&mo 7   &trans  &trans  &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &mo 7
-&trans  &trans  &trans  &trans  &trans              &trans  &trans                                  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                          &trans  &trans  &trans  &trans  &trans  &trans
+&mo 8   &trans  &trans  &trans  &trans  &trans                          &trans  &trans  &trans  &trans  &trans  &mo 8
+&mo 7   &trans  &trans  &trans  &trans  &trans                          &trans  &trans  &trans  &trans  &trans  &mo 7
+                &trans  &trans  &trans  &trans  &trans          &trans  &trans                          &trans
             >;
         };
 
@@ -350,10 +350,10 @@
         snipe_layer {
             label = "SNIPE";
             bindings = <
-&trans  &trans     &trans     &trans  &trans     &trans              &trans          &trans          &trans        &trans          &trans  &trans
-&mo 8   &mkp MCLK  &mkp RCLK  &trans  &mkp LCLK  &trans              &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT &trans  &mo 8
-&mo 7   &trans     &trans     &trans  &trans     &trans              &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT &trans  &mo 7
-&trans  &trans     &trans     &trans  &trans                 &trans  &trans                                                                 &trans
+&trans  &trans     &trans     &trans  &trans     &trans                          &trans          &trans          &trans        &trans           &trans  &trans
+&mo 8   &mkp MCLK  &mkp RCLK  &trans  &mkp LCLK  &trans                          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &mo 8
+&mo 7   &trans     &trans     &trans  &trans     &trans                          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &trans  &mo 7
+                   &trans     &trans  &trans     &trans  &trans          &trans  &trans                                                         &trans
             >;
         };
 
@@ -361,10 +361,10 @@
         system_layer {
             label = "SYS";
             bindings = <
-&none   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4              &none        &none              &none  &none  &none  &bt BT_CLR
-&none   &none         &none         &none         &none         &none                     &none        &none              &none  &none  &none  &none
-&none   &none         &none         &none         &none         &bootloader               &bootloader  &ext_power EP_TOG  &none  &none  &none  &none
-&trans  &trans        &trans        &trans        &trans                          &trans  &trans                                               &trans
+&none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                               &none   &none       &none       &none  &none  &bt BT_CLR
+&none        &none         &none         &none         &none         &ext_power EP_TOG                          &none   &bt BT_NXT  &bt BT_PRV  &none  &none  &none
+&bootloader  &none         &none         &none         &none         &none                                      &none   &none       &none       &none  &none  &bootloader
+                           &trans        &trans        &trans        &trans             &trans          &trans  &trans                                 &trans
             >;
         };
     };
