@@ -9,6 +9,7 @@
 // 7: SCROLL  - Trackball scroll mode
 // 8: SNIPE   - Trackball snipe mode
 // 9: SYS     - Bluetooth and system
+// 10: AERO   - Aerospace window management
 
 #include <behaviors/mouse_keys.dtsi>
 #include <dt-bindings/zmk/mouse.h>
@@ -90,6 +91,19 @@
     };
 
     macros {
+        // Aerospace layer + CMD macro (hold CMD while layer 10 is active)
+        aero_gui: aero_gui {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press &kp LGUI>,
+                <&macro_tap &tog 10>,
+                <&macro_pause_for_release>,
+                <&macro_tap &tog 10>,
+                <&macro_release &kp LGUI>;
+            label = "AERO_GUI";
+        };
+
         // Tmux macros
         tmux_s: tmux_s {
             compatible = "zmk,behavior-macro";
@@ -262,10 +276,10 @@
         default_layer {
             label = "QWERTY";
             bindings = <
-&kp TAB           &kp Q        &kp W      &kp E         &kp R         &kp T                                         &kp Y       &kp U    &kp I       &kp O    &kp P                  &kp BSPC
-&mt LCTRL ESCAPE  &mt LSHFT A  &lt 3 S    &mt LALT D    &lt 2 F       &kp G                                         &kp H       &lt 2 J  &mt LALT K  &lt 3 L  &mt RSHFT SEMI         &kp SQT
-&kp LSHFT         &kp Z        &kp X      &kp C         &kp V         &kp B                                         &kp N       &kp M    &kp COMMA   &kp DOT  &kp SLASH              &mt RSHFT ENTER
-                               &kp RCTRL  &kp LALT      &kp LEFT_GUI  &lt 1 SPACE  &lt 6 RALT          &lt 2 ENTER  &lt 5 BSPC                                &kp LC(LA(LG(SPACE)))
+&kp TAB           &kp Q        &kp W      &kp E         &kp R       &kp T                                         &kp Y       &kp U    &kp I       &kp O    &kp P                  &kp BSPC
+&mt LCTRL ESCAPE  &mt LSHFT A  &lt 3 S    &mt LALT D    &lt 2 F     &kp G                                         &kp H       &lt 2 J  &mt LALT K  &lt 3 L  &mt RSHFT SEMI         &kp SQT
+&kp LSHFT         &kp Z        &kp X      &kp C         &kp V       &kp B                                         &kp N       &kp M    &kp COMMA   &kp DOT  &kp SLASH              &mt RSHFT ENTER
+                               &kp RCTRL  &kp LEFT_GUI  &aero_gui  &lt 1 SPACE  &lt 6 RALT          &lt 2 ENTER  &lt 5 BSPC                                &kp LC(LA(LG(SPACE)))
             >;
         };
 
@@ -285,7 +299,7 @@
             label = "SYM";
             bindings = <
 &trans  &trans     &trans   &trans   &trans   &tmux_space                          &kp PLUS   &kp LBKT  &kp RBKT  &kp DQT    &kp PIPE   &none
-&trans  &kt LC(A)  &tmux_s  &tmux_d  &tmux_f  &tmux_g                              &kp MINUS  &kp LPAR  &kp RPAR  &kp SQT    &kp EQUAL  &kt TILDE
+&trans  &kt LC(A)  &tmux_s  &tmux_d  &tmux_f  &tmux_g                              &kp MINUS  &kp LPAR  &kp RPAR  &kp SQT    &kp EQUAL  &kp TILDE
 &trans  &trans     &trans   &trans   &trans   &trans                               &kp UNDER  &kp LBRC  &kp RBRC  &kp GRAVE  &kp BSLH   &none
                    &trans   &trans   &trans   &trans       &trans          &trans  &trans                                    &trans
             >;
@@ -365,6 +379,17 @@
 &none        &none         &none         &none         &none         &ext_power EP_TOG                          &none   &bt BT_NXT  &bt BT_PRV  &none  &none  &none
 &bootloader  &none         &none         &none         &none         &none                                      &none   &none       &none       &none  &none  &bootloader
                            &trans        &trans        &trans        &trans             &trans          &trans  &trans                                 &trans
+            >;
+        };
+
+        // Layer 10: AERO - Window management (CMD held by aero_gui macro)
+        spaces_layer {
+            label = "AERO";
+            bindings = <
+&kp GRAVE  &kp N1  &kp N2  &kp E   &kp R   &kp Y                           &trans  &trans  &trans  &trans  &trans  &trans
+&kp TAB    &trans  &trans  &trans  &trans  &trans                          &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans  &trans  &trans  &trans  &trans                          &trans  &trans  &trans  &trans  &trans  &trans
+                   &trans  &trans  &trans  &trans  &trans          &trans  &trans                          &trans
             >;
         };
     };
