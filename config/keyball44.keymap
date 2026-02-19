@@ -278,7 +278,7 @@
             bindings = <
 &kp TAB           &kp Q        &kp W      &kp E         &kp R       &kp T                                         &kp Y       &kp U    &kp I       &kp O    &kp P                  &kp BSPC
 &mt LCTRL ESCAPE  &mt LSHFT A  &lt 3 S    &mt LALT D    &lt 2 F     &kp G                                         &kp H       &lt 2 J  &mt LALT K  &lt 3 L  &mt RSHFT SEMI         &kp SQT
-&kp LSHFT         &kp Z        &kp X      &kp C         &kp V       &kp B                                         &kp N       &kp M    &kp COMMA   &kp DOT  &kp SLASH              &mt RSHFT ENTER
+&mt LSHFT ENTER   &kp Z        &kp X      &kp C         &kp V       &kp B                                         &kp N       &kp M    &kp COMMA   &kp DOT  &kp SLASH              &mt RSHFT ENTER
                                &kp RCTRL  &kp LEFT_GUI  &aero_gui  &lt 1 SPACE  &lt 6 RALT          &lt 2 ENTER  &lt 5 BSPC                                &kp LC(LA(LG(SPACE)))
             >;
         };
@@ -386,7 +386,7 @@
         spaces_layer {
             label = "AERO";
             bindings = <
-&kp GRAVE  &kp N1  &kp N2  &kp E   &kp R   &kp Y                           &trans  &trans  &trans  &trans  &trans  &trans
+&kp GRAVE  &kp N1  &kp N2  &kp E   &kp R   &trans                          &trans  &trans  &trans  &trans  &trans  &trans
 &kp TAB    &trans  &trans  &trans  &trans  &trans                          &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &trans  &trans  &trans  &trans  &trans                          &trans  &trans  &trans  &trans  &trans  &trans
                    &trans  &trans  &trans  &trans  &trans          &trans  &trans                          &trans
